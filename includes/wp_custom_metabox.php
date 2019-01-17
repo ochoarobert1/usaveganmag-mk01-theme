@@ -1,7 +1,7 @@
 <?php
-add_action( 'cmb2_admin_init', 'PROYECTO_register_custom_metabox' );
-function PROYECTO_register_custom_metabox() {
-    $prefix = 'PROYECTO_';
+add_action( 'cmb2_admin_init', 'usaveganmag_register_custom_metabox' );
+function usaveganmag_register_custom_metabox() {
+    $prefix = 'usaveganmag_';
 
     $cmb_metabox = new_cmb2_box( array(
         'id'            => $prefix . 'metabox',

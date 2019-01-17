@@ -1,12 +1,14 @@
 ![alt tag](images/repo-logo.jpg)
 
-# PROYECTO Wordpress Custom Theme #
+# USA Vegan Magazine [Mk.01] Wordpress Custom Theme #
 
 * Version: 1.0.0
 * Design: [Robert Ochoa](http://www.robertochoa.com.ve/)
 * Development: [Robert Ochoa](http://www.robertochoa.com.ve/)
 
-Tema diseñado por [Robert Ochoa](http://www.robertochoa.com.ve/) para PROYECTO Este tema custom fue construido en su totalidad, pasando por su etapa de Wireframing, rearmado, version anterior e implementación en hosting externo.
+Tema diseñado por [Robert Ochoa](http://www.robertochoa.com.ve/) para USA Vegan Magazine
+
+Este tema custom fue construido en su totalidad, pasando por su etapa de Wireframing, rearmado, version anterior e implementación en hosting externo.
 
 ### Componentes Principales ###
 
