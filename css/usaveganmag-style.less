@@ -8,19 +8,22 @@ Variables
 
 /* Colors */
 @black: #000000;
+@darkgray: #222222;
 @gray3: #333333;
 @gray6: #666666;
 @gray9: #999999;
 @grayc: #cccccc;
 @grayf0: #f0f0f0;
 @white: #ffffff;
-@blue: #2B7BCB;
-@orange: #FFB12A;
+@maingreen: #53C900;
 
 /* --------------------------------------------------------------
 Body default
 -------------------------------------------------------------- */
-html, body { height: 100%; }
+html,
+body {
+    height: 100%;
+}
 
 body {
     font-weight: 400;
@@ -30,10 +33,234 @@ body {
 a {
     .transition(all .2s ease-in-out);
 
-    &:hover { text-decoration: none; }
+    &:hover {
+        text-decoration: none;
+    }
 }
 
 
-.page-container {
-    min-height: 85vh;
+//.page-container {
+//    min-height: 85vh;
+//}
+
+/* --------------------------------------------------------------
+1.- HEADER
+-------------------------------------------------------------- */
+/* TOP HEADER NAVBAR/SOCIAL */
+.top-bar {
+    background: @darkgray;
+    color: @white;
+
+    /* LEFT SIDE - NAVBAR */
+    & .top-bar-left {
+        & ul {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 0;
+
+            & li {
+                & a {
+                    padding: 0.3rem 0.5rem;
+                    font-size: .7rem;
+                    color: @white;
+
+                    &:hover {
+                        color: @maingreen;
+                    }
+                }
+            }
+        }
+    }
+
+    /* RIGHT SIDE - SOCIAL */
+    & .top-bar-right {
+        text-align: right;
+
+        & a {
+            padding: 0.1rem 0.3rem;
+            font-size: 1rem;
+            color: @white;
+
+            &:hover {
+                color: @maingreen;
+            }
+        }
+    }
+}
+
+/* THE LOGO */
+.the-logo {
+    background: @white;
+    padding: 1.5rem 0;
+
+    & .logo-container {
+
+        & img {
+            display: block;
+            margin: 0 auto;
+        }
+    }
+
+    & .logo-widget {
+        & ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+    }
+}
+
+/* THE NAVBAR */
+.the-navbar {
+    background: @white;
+    box-shadow: 0 5px 15px #f9f8f8;
+}
+
+/* --------------------------------------------------------------
+2.- FOOTER
+-------------------------------------------------------------- */
+.the-footer {
+    position: relative;
+    color: @white;
+    background-size: cover !important;
+    background-position: center center !important;
+
+    &:before {
+        content: ' ';
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgba(37, 37, 37, 0.80);
+        height: 100%;
+        width: 100%;
+    }
+
+    & .footer-wrapper {
+        padding: 3rem 0;
+        padding-bottom: 1.5rem
+
+        & .footer-item {
+            & ul {
+                list-style: none;
+                padding-left: 0;
+                margin-bottom: 0;
+
+                & .widgettitle {
+                    position: relative;
+                    font-size: 1.2rem;
+                    text-transform: uppercase;
+                    font-weight: 500;
+                    padding-bottom: 15px;
+                    margin-bottom: 20px;
+                    text-shadow: 0 0 5px #8c8c8c;
+
+                    &:after {
+                        content: ' ';
+                        background: @maingreen;
+                        position: absolute;
+                        left: 0;
+                        bottom: 0px;
+                        width: 50px;
+                        height: 2px;
+                    }
+                }
+            }
+
+            & .widget_categories {
+                & .cat-item {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding-bottom: .5rem;
+
+                    & a {
+                        color: @white;
+
+                        &:hover {
+                            color: @maingreen;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    & .footer-line {
+        & hr {
+            border-top: 1px solid #6f6f6f;
+        }
+    }
+
+    & .footer-subfooter {
+        padding: 1rem 0;
+    }
+}
+
+
+
+.footer-copy {
+    background: @darkgray;
+    color: @grayc;
+    padding: .3rem;
+    font-size: .8rem;
+
+    & h6 {
+        margin: 0;
+        font-size: .8rem;
+    }
+
+    & ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        & li {
+            & a {
+                color: @grayc;
+                padding-right: 0;
+
+                &:hover {
+                    color: @maingreen;
+                }
+            }
+        }
+
+    }
+}
+
+/* --------------------------------------------------------------
+5. WIDGET
+-------------------------------------------------------------- */
+/* RECENT POSTS - EXTENDED */
+.widget-recent-posts-item {
+    padding-right: 1rem;
+    padding-bottom: 1.5rem;
+
+    & a {
+        color: @white;
+
+        &:hover {
+            color: @grayc;
+        }
+    }
+
+    & img {
+        .transition(all .3s ease-in-out);
+
+        &:hover {
+            .filter(opacity(.8));
+        }
+    }
+
+    & h4 {
+        font-size: 1rem;
+        letter-spacing: -.5px;
+        line-height: 1.4rem;
+        font-weight: 600;
+    }
 }

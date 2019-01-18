@@ -1,5 +1,6 @@
 <?php get_header(); ?>
 <?php the_post(); ?>
+<!-- mfunc wpb_set_post_views($post_id); --><!-- /mfunc -->
 <main class="container">
     <div class="row">
         <div class="single-main-container col-12" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html <?php language_attributes() ?>>
+
     <head>
         <?php /* MAIN STUFF */ ?>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -39,38 +40,73 @@
         <!--[if lt IE 7]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8 lt-ie7" /><![endif]-->
         <!--[if (IE 7)&!(IEMobile)]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8" /><![endif]-->
         <!--[if (IE 8)&!(IEMobile)]><html <?php language_attributes(); ?> class="no-js lt-ie9" /><![endif]-->
-        <!--[if gt IE 8]><!--> <html <?php language_attributes(); ?> class="no-js" /><!--<![endif]-->
+        <!--[if gt IE 8]><!-->
+        <html <?php language_attributes(); ?> class="no-js" />
+        <!--<![endif]-->
         <!--[if IE]> <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script> <![endif]-->
         <!--[if IE]> <script type="text/javascript" src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script> <![endif]-->
         <!--[if IE]> <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico" /> <![endif]-->
         <?php get_template_part('includes/fb-script'); ?>
         <?php get_template_part('includes/ga-script'); ?>
     </head>
+
     <body class="the-main-body <?php echo join(' ', get_body_class()); ?>" itemscope itemtype="http://schema.org/WebPage">
         <div id="fb-root"></div>
         <header class="container-fluid p-0" role="banner" itemscope itemtype="http://schema.org/WPHeader">
             <div class="row no-gutters">
-                <div class="the-header col-12">
-                    <nav class="navbar navbar-expand-md navbar-light bg-light" role="navigation">
-                        <a class="navbar-brand" href="<?php echo home_url('/');?>" title="<?php echo get_bloginfo('name'); ?>">Navbar</a>
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <?php
-                        wp_nav_menu( array(
-                            'theme_location'    => 'header_menu',
-                            'depth'             => 1, // 1 = with dropdowns, 0 = no dropdowns.
-                            'container'         => 'div',
-                            'container_class'   => 'collapse navbar-collapse',
-                            'container_id'      => 'bs-example-navbar-collapse-1',
-                            'menu_class'        => 'navbar-nav mr-auto',
-                            'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
-                            'walker'            => new WP_Bootstrap_Navwalker()
-                        ) );
-                        ?>
+                <div class="top-bar col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="container p-0">
+                        <div class="row no-gutters align-items-center">
+                            <div class="top-bar-left col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <?php wp_nav_menu(array('theme_location' => 'top_menu')); ?>
+                            </div>
+                            <div class="top-bar-right col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <a href=""><i class="fa fa-facebook"></i></a>
+                                <a href=""><i class="fa fa-instagram"></i></a>
+                                <a href=""><i class="fa fa-twitter"></i></a>
+                                <a href=""><i class="fa fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="the-logo col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="container p-0">
+                        <div class="row align-items-center">
+                            <div class="logo-container col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                                <?php $custom_logo_id = get_theme_mod( 'custom_logo' ); ?>
+                                <?php $logo = wp_get_attachment_image_src( $custom_logo_id, array('290', '60')); ?>
+                                <a href="<?php echo home_url('/'); ?>" title="<?php _e('Back to Home', 'usaveganmag'); ?>">
+                                    <?php if ( has_custom_logo() ) { ?>
+                                    <?php echo '<img src="'. esc_url( $logo[0] ) .'" width="'. esc_attr($logo[1]) .'" height="'. esc_attr($logo[2]) .'" class="img-fluid img-logo" alt="'. get_bloginfo( 'name' ) .'" />'; ?>
 
-                    </nav>
+                                    <?php } else { ?>
+                                    <?php echo '<h1>'. get_bloginfo( 'name' ) .'</h1>'; ?>
+                                    <?php }?>
+                                </a>
+                            </div>
+                            <div class="logo-widget col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
+                                <?php if ( is_active_sidebar( 'top_header' ) ) : ?>
+                                <ul id="sidebar-header">
+                                    <?php dynamic_sidebar( 'top_header' ); ?>
+                                </ul>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="the-navbar col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="container">
+                        <div class="row">
+                            <div class="navbar-container col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <?php wp_nav_menu(array('theme_location' => 'header_menu', 'walker' => new IBenic_Walker())); ?>
+                                <ul>
+                                    <li>
+                                        <a href=""><i class="fa fa-search"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </header>

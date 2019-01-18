@@ -23,7 +23,7 @@ function my_jquery_enqueue() {
         /*- JQUERY ON WEB  -*/
         wp_register_script( 'jquery', 'https://code.jquery.com/jquery-3.3.1.min.js', false, '3.3.1', false);
         /*- JQUERY MIGRATE ON WEB  -*/
-        wp_register_script( 'jquery-migrate', 'http://code.jquery.com/jquery-migrate-3.0.1.min.js', array('jquery'), '3.0.1', true);
+        wp_register_script( 'jquery-migrate', 'https://code.jquery.com/jquery-migrate-3.0.1.min.js', array('jquery'), '3.0.1', true);
     }
     wp_enqueue_script('jquery');
     wp_enqueue_script('jquery-migrate');
@@ -99,8 +99,8 @@ add_theme_support( 'customize-selective-refresh-widgets' );
 
 // Add support for core custom logo.
 add_theme_support( 'custom-logo', array(
-    'height'      => 250,
-    'width'       => 250,
+    'height'      => 60,
+    'width'       => 290,
     'flex-width'  => true,
     'flex-height' => true,
 ) );
@@ -110,6 +110,7 @@ add_theme_support( 'custom-logo', array(
 -------------------------------------------------------------- */
 
 register_nav_menus( array(
+    'top_menu' => __( 'Header Menu - Top', 'usaveganmag' ),
     'header_menu' => __( 'Menu Header - Principal', 'usaveganmag' ),
     'footer_menu' => __( 'Menu Footer - Principal', 'usaveganmag' ),
 ) );
@@ -121,7 +122,17 @@ register_nav_menus( array(
 add_action( 'widgets_init', 'usaveganmag_widgets_init' );
 function usaveganmag_widgets_init() {
     register_sidebar( array(
-        'name' => __( 'Sidebar Principal', 'usaveganmag' ),
+        'name' => __( 'Header Widgets', 'usaveganmag' ),
+        'id' => 'top_header',
+        'description' => __( 'These widgets will be seen at side of main logo', 'usaveganmag' ),
+        'before_widget' => '<li id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</li>',
+        'before_title'  => '<h2 class="widgettitle">',
+        'after_title'   => '</h2>',
+    ) );
+
+    register_sidebar( array(
+        'name' => __( 'Main Sidebar', 'usaveganmag' ),
         'id' => 'main_sidebar',
         'description' => __( 'Estos widgets seran vistos en las entradas y páginas del sitio', 'usaveganmag' ),
         'before_widget' => '<li id="%1$s" class="widget %2$s">',
@@ -130,15 +141,29 @@ function usaveganmag_widgets_init() {
         'after_title'   => '</h2>',
     ) );
 
-    //    register_sidebar( array(
-    //        'name' => __( 'Shop Sidebar', 'usaveganmag' ),
-    //        'id' => 'shop_sidebar',
-    //        'description' => __( 'Estos widgets seran vistos en Tienda y Categorias de Producto', 'usaveganmag' ),
-    //        'before_widget' => '<li id='%1$s' class='widget %2$s'>',
-    //        'after_widget'  => '</li>',
-    //        'before_title'  => '<h2 class='widgettitle'>',
-    //        'after_title'   => '</h2>',
-    //    ) );
+    register_sidebar( array(
+        'name' => __( 'Spanish Sidebar', 'usaveganmag' ),
+        'id' => 'spanish_sidebar',
+        'description' => __( 'Estos widgets seran vistos en las entradas y páginas del sitio', 'usaveganmag' ),
+        'before_widget' => '<li id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</li>',
+        'before_title'  => '<h2 class="widgettitle">',
+        'after_title'   => '</h2>',
+    ) );
+
+    register_sidebars( 3, array(
+        'name' => __( 'Footer Section %d', 'usaveganmag' ),
+        'id' => 'footer_section',
+        'description' => __( 'These widgets will be seen at footer section', 'usaveganmag' ),
+        'before_widget' => '<li id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</li>',
+        'before_title'  => '<h2 class="widgettitle">',
+        'after_title'   => '</h2>',
+    ) );
+
+    /* REGISTER CUSTOM WIDGETS */
+    register_widget('recent_posts_widget');
+
 }
 
 /* --------------------------------------------------------------
@@ -179,7 +204,7 @@ require_once('includes/wp_custom_post_type.php');
     ADD CUSTOM THEME CONTROLS
 -------------------------------------------------------------- */
 
-//require_once('includes/wp_custom_theme_control.php');
+require_once('includes/wp_custom_theme_control.php');
 
 /* --------------------------------------------------------------
     ADD CUSTOM IMAGE SIZE
